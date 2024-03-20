@@ -9,8 +9,22 @@ namespace Exercicio07.ConsoleApp
     {
         static void Main(string[] args)
         {
-            decimal salarioBase, salarioVendas, salarioTotal;
+            decimal salarioBase, totalVendas, salarioTotal, percentual;
 
+            Console.WriteLine("Programa calcula salário");
+
+            Console.WriteLine("Digite o salário base:");
+            salarioBase = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite o total de vendas:");
+            totalVendas = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite o percentual de comissionamento:");
+            percentual = Convert.ToInt32(Console.ReadLine());
+
+            salarioTotal = salarioBase + (totalVendas * percentual / 100);
+
+            Console.WriteLine("O salário total é: " +  salarioTotal);
         }
     }
 }

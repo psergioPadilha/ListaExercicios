@@ -1,6 +1,8 @@
 ﻿//Crie um programa para calcular o volume de uma caixa retangular
 //Volume = comprimento*largura*altura
 
+using System;
+
 namespace Exercicio01.ConsoleApp
 {
     internal class Program
@@ -8,28 +10,33 @@ namespace Exercicio01.ConsoleApp
         static void Main(string[] args)
         {
             while (true) {
+                Console.Clear();
                 Console.WriteLine("PROGRAMA CALCULA VOLUME DA CAIXA");
+                Console.WriteLine();
+
+                decimal comprimento = obterNumeroDecimal("Digite o comprimento da caixa: ");
+
+                decimal largura = obterNumeroDecimal("Digite a largura da caixa: ");
+
+                decimal altura = obterNumeroDecimal("Digite a altura da caixa: ");
+
+                decimal volume = calcularVolume(comprimento, largura, altura);
+
+                Console.WriteLine("\nO volume da caixa é " + volume);
+
                 Console.ReadLine();
+            }
 
-                Console.WriteLine("Digite o comprimento da caixa!");
-                int comprimento = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Comprimento = " + comprimento);
-                Console.ReadLine();
+            static decimal obterNumeroDecimal(String texto)
+            {
+                Console.Write(texto);
+                decimal numeroDecimal = Convert.ToDecimal(Console.ReadLine());
+                return numeroDecimal;
+            }
 
-                Console.WriteLine("Digite a largura da caixa!");
-                int largura = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Largura = " + largura);
-                Console.ReadLine();
-
-                Console.WriteLine("Digite a altura da caixa!");
-                int altura = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Altura = " + altura);
-                Console.ReadLine();
-
-                int volume = comprimento * largura * altura;
-                Console.WriteLine("O volume da caixa é " + volume);
-
-                Console.ReadKey();
+            static decimal calcularVolume(decimal comprimento, decimal larrgura, decimal altura)
+            {
+                return comprimento * larrgura * altura;
             }
         }
     }
