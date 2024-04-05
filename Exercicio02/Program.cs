@@ -6,11 +6,11 @@ namespace Exercicio02
     {
         static void Main(string[] args)
         {
-            decimal temperaturaFarenheit, temperaturaCelsius;
+            double temperaturaFarenheit, temperaturaCelsius;
             Console.WriteLine("Programa Alterna Escalas de Temperatura");
 
             Console.WriteLine("Digite a temperatura na escala Celsius:");
-            temperaturaCelsius = Convert.ToDecimal(Console.ReadLine());
+            temperaturaCelsius = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("");
             temperaturaFarenheit = 9 / 5 * temperaturaCelsius + 32;
 
