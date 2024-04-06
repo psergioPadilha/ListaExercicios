@@ -8,13 +8,12 @@ namespace Exercicio07.ConsoleApp
 {
     internal class Program
     {
-        
         static void Main(string[] args)
         {
             while (true)
             {
                 Console.Clear();
-
+                Console.WriteLine("PROGRMA CALCULA SALÁRIO FINAL");
                 double salarioBase = 0;
                 double totalDeVendas = 0;
                 double salarioTotal = 0;
@@ -55,7 +54,7 @@ namespace Exercicio07.ConsoleApp
         #region Imprime o salário final
         static void ImprimirSalarioTotal(double salarioTotal)
         {
-            Console.WriteLine("O salário final é R$" +  salarioTotal + ".");
+            Console.WriteLine("O salário final é R$" + salarioTotal + ".");
         }
         #endregion
     }
