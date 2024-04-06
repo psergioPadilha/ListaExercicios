@@ -13,43 +13,81 @@ namespace Exercicio10ConsoleApp
 
             while (true)
             {
-                Console.Clear();
-                Console.WriteLine("PROGRAMA CALCULA MÉDIA PONDERADA");
-                Console.WriteLine();
-                Console.WriteLine("Digite 'C' para 'CALCULAR':");
-                Console.WriteLine("Digite 'S' para 'SAIR':");
-                String opcao = Console.ReadLine();
-                Console.WriteLine();
+                //Apresenta opções de continuar ou de sair do sistema
+                string opcao = Menu();
 
-                if ((opcao != "S") && (opcao != "s") && (opcao != "C") && (opcao != "c"))
-                {
-                    Console.WriteLine("Opação inválida, por favor digite novamente!");
-                    Console.ReadLine();
-                    continue;
-                }
-                else if ((opcao == "S") || (opcao == "s"))
-                {
-                    break;
-                }
-                else if ((opcao == "C") || (opcao == "c"))
-                {
+                //Verifica se o usuário entrou com as opções corretas
+                ValidaOpcaoMenu(opcao);
 
-                    Console.Write("Digite o valor da prova 1: ");
-                    nota1 = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Digite o valor do peso 1: ");
-                    peso1 = Convert.ToDouble(Console.ReadLine());
+                //Capta os valores referentes as provas e seus pesos respectivos
+                EntrarComValorDasNotas(out nota1, out nota2, out peso1, out peso2);
 
-                    Console.Write("Digite o valor da prova 2: ");
-                    nota2 = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Digite o valor do peso 2: ");
-                    peso2 = Convert.ToDouble(Console.ReadLine());
+                //Calcula o valor da média e atribui a variável correspondente
+                mediaPonderada = CalcularMedia(nota1, nota2, peso1, peso2);
 
-                    Console.WriteLine();
-                    mediaPonderada = (((peso1 * nota1) + (peso2 * nota2)) / peso1 + peso2);
-                    Console.WriteLine("A média ponderada é = " + mediaPonderada);
-                    Console.ReadLine();
-                }
+                //Apresenta o resultado
+                ApresentaMedia(mediaPonderada);
+
+                Console.ReadLine();
             }
         }
+
+        #region Apresenta o resultado da média das provas
+        private static void ApresentaMedia(double mediaPonderada)
+        {
+            Console.WriteLine("A média ponderada é = " + mediaPonderada);
+        }
+        #endregion
+
+        #region Calcula a média das provas
+        private static double CalcularMedia(double nota1, double nota2, double peso1, double peso2)
+        {
+            return (((peso1 * nota1) + (peso2 * nota2)) / peso1 + peso2);
+        }
+        #endregion
+
+        #region Entrada dos valores das notas e pesos
+        private static void EntrarComValorDasNotas(out double nota1, out double nota2, out double peso1, out double peso2)
+        {
+            Console.Write("Digite o valor da prova 1: ");
+            nota1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Digite o valor do peso 1: ");
+            peso1 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Digite o valor da prova 2: ");
+            nota2 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Digite o valor do peso 2: ");
+            peso2 = Convert.ToDouble(Console.ReadLine());
+        }
+        #endregion
+
+        #region Menu
+        private static string Menu()
+        {
+            Console.Clear();
+            Console.WriteLine("PROGRAMA CALCULA MÉDIA PONDERADA");
+            Console.WriteLine();
+            Console.WriteLine("Digite 'C' para 'CALCULAR' e 'S' para 'SAIR'!");
+            Console.Write("Opção: ");
+            string opcao = Console.ReadLine();
+            Console.WriteLine();
+            return opcao;
+        }
+        #endregion
+
+        #region Validar opção do menu
+        static void ValidaOpcaoMenu(string opcao)
+        {
+            if ((opcao != "S") && (opcao != "s") && (opcao != "C") && (opcao != "c"))
+            {
+                Console.WriteLine("Opação inválida, por favor digite novamente!");
+                Console.ReadLine();
+            }
+            else if ((opcao == "S") || (opcao == "s"))
+            {
+                Environment.Exit(0);
+            }
+        }
+        #endregion
     }
 }
