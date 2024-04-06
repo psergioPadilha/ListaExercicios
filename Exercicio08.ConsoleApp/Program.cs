@@ -6,19 +6,50 @@ namespace Exercicio08.ConsoleApp
     {
         static void Main(string[] args)
         {
-            double raioLata, alturaLata, volumeLata;
+            while (true)
+            {
+                double raioLata = 0;
+                double alturaLata = 0;
+                double volumeLata = 0;
 
-            Console.WriteLine("PROGRAMA CALCULA VOLUME DA LATA DE ÓLEO");
-            Console.WriteLine("Informe o raio da lata:");
-            
+                Console.Clear();
+                Console.WriteLine("PROGRAMA CALCULA VOLUME DA LATA DE ÓLEO");
+                Console.WriteLine();
+
+                EntradaDeDados(ref raioLata, ref alturaLata);
+
+                volumeLata = CalcularVolume(ref raioLata, ref alturaLata);
+
+                ImprimirVolume(volumeLata);
+
+                Console.ReadLine();
+            }
+        }
+
+        #region Entraada de dados
+        static void EntradaDeDados(ref double raioLata, ref double alturaLata)
+        {
+            Console.Write("Informe o raio da lata: ");
             raioLata = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe a altura da lata:");
+            Console.Write("Informe a altura da lata:");
             alturaLata = double.Parse(Console.ReadLine());
-
-            volumeLata = Math.PI * Math.Pow(raioLata, 2) * alturaLata;
-
-            Console.WriteLine("O volume da lata é " + volumeLata + "!");
         }
+        #endregion
+
+        #region Calcular volume
+        static double CalcularVolume(ref double raio, ref double altura)
+        {
+            double volumeLata = Math.PI * Math.Pow(raio, 2) * altura;
+            return volumeLata;
+        }
+        #endregion
+
+        #region Imprimi volume
+        static void ImprimirVolume(double volume)
+        {
+            Console.Write("O volume da lata é " + volume.ToString("F") + " cm³.");
+        }
+        #endregion
     }
 }
